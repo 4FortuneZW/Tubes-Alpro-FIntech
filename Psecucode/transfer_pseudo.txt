@@ -1,0 +1,23 @@
+while menu=="transfer" do
+    procedure transfer(in/out: saldo: real, in/out: transaksi: real)
+    /I.S saldo & transaksi : real
+    /F.S saldo & transaksi ter-update
+    kamus
+        nerima, ngirim :string 
+    algoritma
+        print("apakah anda akan menerima uang? Y/N")
+        input(nerima)
+            if nerima=="Y" or "y" then
+                print("Berapa banyak anda akan menerima uang?")
+                input(transaksi)
+                saldo<=saldo+transaksi
+            }else if nerima=="N" or "n" then
+                print("apakah anda akan mengirim uang? Y/N")
+                input(ngirim)
+                    if ngirim=="Y" then
+                        print("Berapa banyak anda akan mengirim uang?")
+                        input(transaksi)
+                        saldo<=saldo-transaksi
+                    }endif   
+            }endif
+endwhile
