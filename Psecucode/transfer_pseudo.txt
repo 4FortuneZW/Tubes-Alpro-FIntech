@@ -1,7 +1,7 @@
 while menu=="transfer" do
     procedure transfer(in/out: saldo: real, in/out: transaksi: real)
-    /I.S saldo & transaksi : real
-    /F.S saldo & transaksi ter-update
+    {I.S saldo dan transaksi terdefinisi bilangan real}
+    {F.S mencari hasil transaksi saldo terupdate bertambah atau berkurang dari transaksi yang dilakukan}
     kamus
         nerima, ngirim :string 
     algoritma
