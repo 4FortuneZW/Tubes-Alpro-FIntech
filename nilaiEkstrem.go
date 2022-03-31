@@ -1,4 +1,4 @@
-package main agung dimitiri lelelelelel
+package main 
 
 
 import "fmt"
