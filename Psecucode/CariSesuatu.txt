@@ -1,0 +1,5 @@
+function Cari()
+{cari berdasarkan data yang dapat dipilih mengembalikan hasil pencarian}
+kamus
+algoritma
+endfunction
