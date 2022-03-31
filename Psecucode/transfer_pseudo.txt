@@ -11,13 +11,13 @@ while menu=="transfer" do
                 print("Berapa banyak anda akan menerima uang?")
                 input(transaksi)
                 saldo<=saldo+transaksi
-            }else if nerima=="N" or "n" then
+            else if nerima=="N" or "n" then
                 print("apakah anda akan mengirim uang? Y/N")
                 input(ngirim)
                     if ngirim=="Y" then
                         print("Berapa banyak anda akan mengirim uang?")
                         input(transaksi)
                         saldo<=saldo-transaksi
-                    }endif   
-            }endif
+                    endif   
+            endif
 endwhile
