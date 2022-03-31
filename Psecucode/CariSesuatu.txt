@@ -1,5 +1,6 @@
-function Cari()
+function Cari(user:tipeBentukan, )
 {cari berdasarkan data yang dapat dipilih mengembalikan hasil pencarian}
 kamus
 algoritma
+
 endfunction
