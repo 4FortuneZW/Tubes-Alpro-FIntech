@@ -21,7 +21,7 @@ Prosedur
 
 Function
 1. Bunga (return "anda mendapatkan bunga %d", saldo sekarang bulan ini) 
-2. jumlah inputan
+2. jumlah Saldo
 3. Cari Saldo Akhir (rata-rata saldo yang disimpan oleh fintech)
 4. Rata-Rata usia pengguna, Pengguna melakukan 1x transaksi
 5. Maximal dan Minimal saldo yang tersimpan dalam fintech
