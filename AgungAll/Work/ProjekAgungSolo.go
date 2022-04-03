@@ -61,11 +61,14 @@ func cariSaldo(data DataPelanggan, Cari string) float64 {
 	return -1
 }
 
-func MinMax(data DataPelanggan, min, max *float64)
+func MinMax(data DataPelanggan, min, max *float64) {
+
+}
 
 func main() {
 	var data DataPelanggan
 	var cariNama string
+	var min, max float64
 	isiDataDiri(&data)
 	fmt.Println("")
 	tampilkan(data)
@@ -83,5 +86,5 @@ func main() {
 	} else {
 		fmt.Println("Mohon Maaf Nama tidak ada dalam daftar!")
 	}
-
+	fmt.Print("")
 }
