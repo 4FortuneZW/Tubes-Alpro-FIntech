@@ -16,7 +16,7 @@ Type Data
 Prosedur
 1. Isi Data Diri (input)
 (Nama, Usia, Jenis Kelamin, saldoTerbaru)
-2. Transfer - dikirim- terkirim (return saldo +- transfer)
+2. Maximal dan Minimal saldo yang tersimpan dalam fintech
 3. Cari User
 
 Function
@@ -24,4 +24,4 @@ Function
 2. jumlah Saldo
 3. Cari Saldo Akhir (rata-rata saldo yang disimpan oleh fintech)
 4. Rata-Rata usia pengguna, Pengguna melakukan 1x transaksi
-5. Maximal dan Minimal saldo yang tersimpan dalam fintech
+5. Jumlah Laki-Laki dan Perempuan

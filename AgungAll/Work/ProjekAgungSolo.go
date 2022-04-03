@@ -86,5 +86,5 @@ func main() {
 	} else {
 		fmt.Println("Mohon Maaf Nama tidak ada dalam daftar!")
 	}
-	fmt.Print("")
+	fmt.Print("Minimal Saldo :")
 }
