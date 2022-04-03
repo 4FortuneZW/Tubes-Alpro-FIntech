@@ -52,14 +52,34 @@ func rata2(data DataPelanggan) float64 {
 	return totalSaldoPelanggan(data) / float64(data.nPelanggan)
 }
 
+func cariSaldo(data DataPelanggan, Cari string) float64 {
+	for i := 0; i < data.nPelanggan; i++ {
+		if data.tabel[i].nama == Cari {
+			return data.tabel[i].saldo
+		}
+	}
+	return -1
+}
+
 func main() {
 	var data DataPelanggan
+	var cariNama string
 	isiDataDiri(&data)
 	fmt.Println("")
 	tampilkan(data)
-	fmt.Println("YUK BISA YUK")
+
 	totalSaldo := totalSaldoPelanggan(data)
 	fmt.Printf("Saldo Total : %.2f\n", totalSaldo)
 	rataSaldo := rata2(data)
 	fmt.Printf("Rata-rata Saldo : %.2f\n", rataSaldo)
+
+	fmt.Print("Cari Saldo, Masukkan Nama : ")
+	fmt.Scan(&cariNama)
+	ketemu := cariSaldo(data, cariNama)
+	if ketemu != -1 {
+		fmt.Printf("Saldo %s adalah %.2f\n", cariNama, ketemu)
+	} else {
+		fmt.Println("Mohon Maaf Nama tidak ada dalam daftar!")
+	}
+
 }

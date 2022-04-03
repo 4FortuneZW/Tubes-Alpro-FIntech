@@ -7,4 +7,5 @@ func main() {
 	bInt := int(n)
 	desimal := (float64(bInt) - n) * -1
 	fmt.Printf("%.3f", desimal)
+
 }
