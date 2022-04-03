@@ -27,6 +27,7 @@ func isiDataDiri(data *DataPelanggan) {
 		data.tabel[data.nPelanggan].usia = usia
 		data.tabel[data.nPelanggan].saldo = saldo
 		fmt.Scan(&nama, &gender, &usia, &saldo)
+		data.nPelanggan++
 	}
 }
 func tampilkan(data DataPelanggan) {
@@ -36,6 +37,9 @@ func tampilkan(data DataPelanggan) {
 }
 
 func main() {
-
+	var data DataPelanggan
+	isiDataDiri(&data)
+	fmt.Println("")
+	tampilkan(data)
 	fmt.Println("YUK BISA YUK")
 }
