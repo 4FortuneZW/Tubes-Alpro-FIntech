@@ -12,4 +12,3 @@ Aulia Perempuan 32 7500000
 Hilary Perempuan 29 45000000
 Kominfo Laki 60 0
 NONE NONE -1 -1
-Agung

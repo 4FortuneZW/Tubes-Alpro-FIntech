@@ -52,23 +52,30 @@ func rata2(data DataPelanggan) float64 {
 	return totalSaldoPelanggan(data) / float64(data.nPelanggan)
 }
 
-func cariSaldo(data DataPelanggan, Cari string) float64 {
+func Minimum(data DataPelanggan) int {
+	//asumsi tidak manusia berumur 1000
+	var usiaMinimum int = 1000
 	for i := 0; i < data.nPelanggan; i++ {
-		if data.tabel[i].nama == Cari {
-			return data.tabel[i].saldo
+		if data.tabel[i].usia < usiaMinimum {
+			usiaMinimum = data.tabel[i].usia
+		}
+	}
+	return -1
+}
+func Maximum(data DataPelanggan) int {
+	//asumsi tidak manusia berumur 1000
+	var usiaMax int = 1000
+	for i := 0; i < data.nPelanggan; i++ {
+		if data.tabel[i].usia < usiaMax {
+			usiaMax = data.tabel[i].usia
 		}
 	}
 	return -1
 }
 
-// func MinMax(data DataPelanggan, min, max *float64) {
-
-// }
-
 func main() {
 	var data DataPelanggan
-	var cariNama string
-	// var min, max float64
+	var min, max int
 	isiDataDiri(&data)
 	fmt.Println("")
 	tampilkan(data)
@@ -77,14 +84,9 @@ func main() {
 	fmt.Printf("Saldo Total : %.2f\n", totalSaldo)
 	rataSaldo := rata2(data)
 	fmt.Printf("Rata-rata Saldo : %.2f\n", rataSaldo)
+	min = Minimum(data)
+	max = Maximum(data)
+	fmt.Println("Usia Minimum dari data :", min)
+	fmt.Println("Usia Maximum dari data :", max)
 
-	fmt.Print("Cari Saldo, Masukkan Nama : ")
-	fmt.Scan(&cariNama)
-	ketemu := cariSaldo(data, cariNama)
-	if ketemu != -1 {
-		fmt.Printf("Saldo %s adalah %.2f\n", cariNama, ketemu)
-	} else {
-		fmt.Println("Mohon Maaf Nama tidak ada dalam daftar!")
-	}
-	fmt.Print("Minimal Saldo :")
 }
