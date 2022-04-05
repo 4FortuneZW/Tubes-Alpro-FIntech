@@ -7,9 +7,9 @@ import (
 const NMAX int = 1001
 
 type Pelanggan struct {
-	nama, gender   string
-	usia, transfer int
-	saldo          float64
+	nama, gender, membership string
+	usia                     int
+	saldo                    float64
 }
 
 type tabPelanggan [NMAX]Pelanggan
@@ -34,9 +34,22 @@ func isiDataDiri(data *DataPelanggan) {
 		data.nPelanggan++
 	}
 }
-func tampilkan(data DataPelanggan) {
+
+func kelolaMember(data *DataPelanggan) {
 	for i := 0; i < data.nPelanggan; i++ {
-		fmt.Println(data.tabel[i])
+		if data.tabel[i].saldo <= 25000000.0 {
+			data.tabel[i].membership = "Silver"
+		} else if data.tabel[i].saldo <= 100000000.0 {
+			data.tabel[i].membership = "Gold"
+		} else if data.tabel[i].saldo > 100000000.0 {
+			data.tabel[i].membership = "Platinum"
+		}
+	}
+}
+
+func pengurutanMembership(data *DataPelanggan) {
+	for i := 0; i < data.nPelanggan; i++ {
+
 	}
 }
 
@@ -50,6 +63,15 @@ func totalSaldoPelanggan(data DataPelanggan) float64 {
 
 func rata2(data DataPelanggan) float64 {
 	return totalSaldoPelanggan(data) / float64(data.nPelanggan)
+}
+
+func rata2Usia(data DataPelanggan) int {
+	var total int = 0.0
+	for i := 0; i < data.nPelanggan; i++ {
+		total += data.tabel[i].usia
+	}
+	rata2 := total / data.nPelanggan
+	return rata2
 }
 
 func Minimum(data DataPelanggan) int {
@@ -78,7 +100,6 @@ func main() {
 	var min, max int
 	isiDataDiri(&data)
 	fmt.Println("")
-	tampilkan(data)
 
 	totalSaldo := totalSaldoPelanggan(data)
 	fmt.Printf("Saldo Total : %.2f\n", totalSaldo)
@@ -88,5 +109,7 @@ func main() {
 	max = Maximum(data)
 	fmt.Println("Usia Minimum dari data :", min)
 	fmt.Println("Usia Maximum dari data :", max)
+	rata2Usia := rata2Usia(data)
+	fmt.Println("Rata-rata usia dari data adalah ", rata2Usia)
 
 }
