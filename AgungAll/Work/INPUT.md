@@ -11,4 +11,5 @@ Winoto Laki 24 40000000
 Aulia Perempuan 32 7500000
 Hilary Perempuan 29 45000000
 Kominfo Laki 60 0
+Citot Perempuan 30 550000000
 NONE NONE -1 -1

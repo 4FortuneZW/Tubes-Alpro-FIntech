@@ -5,8 +5,8 @@ Prosedur
 1. Isi Data Diri (input) @
 (Nama, Usia, Jenis Kelamin, saldoTerbaru) @
 2. Kelola membership(Silver, Gold, Platinum) @
-3. urutkan berdasarkan membership dan nama(a-z)
-4. tampilkan data diri
+3. urutkan berdasarkan membership dan nama(a-z) @
+4. tampilkan data diri @
 
 
 Function
