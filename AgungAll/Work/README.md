@@ -13,8 +13,8 @@ Function
 1. Maximal umur yang tersimpan dalam fintech @
 2. Minimal umur yang tersimpan dalam fintech @
 3. jumlah Saldo @
-4. rata-rata saldo permembership 
-5. Rata-Rata usia permembership
+4. rata-rata saldo permembership @
+5. Rata-Rata usia permembership @
 6. rata-rata usia @
 
 inklusif

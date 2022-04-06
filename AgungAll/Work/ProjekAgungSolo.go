@@ -70,19 +70,15 @@ func pengurutanMembership(data *DataPelanggan) {
 }
 
 func totalSaldoPelanggan(data DataPelanggan) float64 {
-	var total float64
+	var total float64 = 0.0
 	for i := 0; i < data.nPelanggan; i++ {
 		total += data.tabel[i].saldo
 	}
 	return total
 }
 
-func rata2(data DataPelanggan) float64 {
-	return totalSaldoPelanggan(data) / float64(data.nPelanggan)
-}
-
 func rata2Usia(data DataPelanggan) int {
-	var total int = 0.0
+	var total int = 0
 	for i := 0; i < data.nPelanggan; i++ {
 		total += data.tabel[i].usia
 	}
@@ -172,8 +168,6 @@ func main() {
 	// tampilkan(data)
 	totalSaldo := totalSaldoPelanggan(data)
 	fmt.Printf("Saldo Total : %.2f\n", totalSaldo)
-	rataSaldo := rata2(data)
-	fmt.Printf("Rata-rata Saldo : %.2f\n", rataSaldo)
 	min = Minimum(data)
 	max = Maximum(data)
 	fmt.Println("Usia Minimum dari data :", min)
