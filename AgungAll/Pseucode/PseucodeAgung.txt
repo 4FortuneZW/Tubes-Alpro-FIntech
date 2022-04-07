@@ -7,7 +7,7 @@ type Pelanggan : <
     membership      string 
 >
 
-type tabPelanggan [0..NMAX]Pelanggan
+type tabPelanggan array [0..NMAX] of Pelanggan
 
 type DataPelanggan : <
     tabel           tabPelanggan
