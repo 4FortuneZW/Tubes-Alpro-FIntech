@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type User struct {
 	Nama, JenisKelamin string
@@ -8,7 +10,7 @@ type User struct {
 	saldo              float64
 }
 
-const NMAX = 30
+const NMAX = 4
 
 type tabUser [NMAX]User
 
@@ -32,7 +34,24 @@ func DataDiri(DtUser *tabUser, n *int) {
 		DtUser[i].usia = usia
 		DtUser[i].JenisKelamin = JenisKelamin
 		DtUser[i].saldo = saldo
+
 	}
+}
+
+func findMinAndMax(DtUser tabUser) (min int, max int) {
+	var value int
+
+	min = DtUser[0].usia
+	max = DtUser[0].usia
+	for _, value := range DtUser {
+		if value < min {
+			min = value
+		}
+		if value > max {
+			max = value
+		}
+	}
+	return min, max
 }
 
 func main() {
@@ -42,4 +61,9 @@ func main() {
 	fmt.Print("Jumlah orang : ")
 	fmt.Scanln(&n)
 	DataDiri(&DtUser, &n)
+	fmt.Print(DtUser)
+	min, max := findMinAndMax(DtUser)
+	fmt.Println("Min: ", min)
+	fmt.Println("Max: ", max)
+
 }
