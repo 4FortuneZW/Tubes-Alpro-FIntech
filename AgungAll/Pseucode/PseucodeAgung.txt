@@ -1,6 +1,6 @@
 constant NMAX : integer = 1001
 
-type Pelanggan <
+type Pelanggan : <
     nama, gender    string
     usia            integer
     saldo           real
@@ -9,7 +9,7 @@ type Pelanggan <
 
 type tabPelanggan [0..NMAX]Pelanggan
 
-type DataPelanggan <
+type DataPelanggan : <
     tabel           tabPelanggan
     nPelanggan      integer
 >
