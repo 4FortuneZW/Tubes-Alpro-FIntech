@@ -1,4 +1,4 @@
-constant NMAX integer = 1001
+constant NMAX : integer = 1001
 
 type Pelanggan <
     nama, gender    string
