@@ -39,16 +39,15 @@ func DataDiri(DtUser *tabUser, n *int) {
 }
 
 func findMinAndMax(DtUser tabUser) (min int, max int) {
-	var value int
 
 	min = DtUser[0].usia
 	max = DtUser[0].usia
-	for _, value := range DtUser {
-		if value < min {
-			min = value
+	for _, value := range DtUser { //masuk ke array bukan dari index
+		if value.usia < min {
+			min = value.usia
 		}
-		if value > max {
-			max = value
+		if value.usia > max {
+			max = value.usia
 		}
 	}
 	return min, max
