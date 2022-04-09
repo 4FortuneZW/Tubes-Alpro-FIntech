@@ -1,0 +1,54 @@
+constant NMAX : interger = 30
+
+type USer : <
+    nama, JenisKelamin  string
+    usia                interger 
+    saldo               float64
+>
+
+type tabUser array[0..NMAX]of USer
+
+
+procedure DataDiri(in/out DtUser : tabUser, in/out n : interger)
+{terdefinisi tipe bentukan data untuk menginput data diri kemudian
+ menghasilkan ke dalam bentuk array}
+kamus
+nama : string
+usia : interger
+saldo : float64
+JenisKelamin : string
+
+algoritma
+    for i <- 0 to n do
+        print(*Nama :*)
+        input(nama)
+        print(*Usia :*)
+        input(usia)
+        print(*Jenis Kelamin :*)
+        input(jenisKelamin)
+        print(*Saldo :*)
+        input(saldo)
+        DtUser[i] <- nama
+        DtUser[i] <- usia
+        DtUser[i] <- JenisKelamin
+        DtUser[i] <- saldo
+    endfor
+
+function findMinAndMax(DtUser: tabUser, min,max : integer)
+{terdefinisi tipe bentukan data untuk mencari nilai minimum dan maksimum dari value usia}
+kamus
+    value <- interger
+
+algoritma
+    min <- DtUser[i]<-usia
+    max <- DtUser[i]<-usia
+    for _, value<-usia <- range DtUser do
+        if value<-usia < min then
+            min <- value<-usia
+        if value<-usia > max then
+            max <- value<-usia
+        endif
+    return min, max
+endfunction
+
+
