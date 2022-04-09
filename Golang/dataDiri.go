@@ -30,7 +30,7 @@ func DataDiri(DtUser *tabUser, n *int) {
 		fmt.Print("Saldo : ")
 		fmt.Scanln(&saldo)
 
-		DtUser[i].Nama = nama
+		DtUser[i].Nama = nama //
 		DtUser[i].usia = usia
 		DtUser[i].JenisKelamin = JenisKelamin
 		DtUser[i].saldo = saldo
