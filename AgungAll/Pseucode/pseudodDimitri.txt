@@ -1,0 +1,42 @@
+procedure kelolamembership(in/out data : DataPelanggan)
+{terdifinisi tipe bentukan data untuk mengelompokan membership nasabah, berupa silver/gold/platinum.
+Procedure ini menghasilkan elemen membership pada tipe bentukan}
+kamus
+    i: int 
+algoritma
+    for i<- 0; i< data.nPelanggan; i++ do
+        if data.tabel[i].saldo <= 25000000.0 then
+            data.tabel[i].membership <- "Silver"
+        else if (data.tabel[i].saldo > 25000000.0) and (data.tabel[i].saldo <= 100000000.0) then
+            data.tabel[i].membership <- "Gold"
+        else if data.tabel[i].saldo > 100000000.0 then
+            data.tabel[i].membership <- "Platinum"
+        endif
+    endfor
+endprocedure
+
+
+procedure pengurutanMembership(in/out data: DataPelanggan)
+{terdifinisi tipe bentukan data untuk mensorting data pelanggan per membernya secara ascending berdasarkan nama pelanggan }
+kamus 
+    i,j:int
+algoritma
+    for i<-0; i < data.nPelanggan; i++ do 
+        j <- i+1
+        for data.tabel[j-1].membership < data.tabel[j].membership and j<0 do {perulangan untuk mengurutkan alphabet kelas membership}
+            temp <- data.tabel[j]
+            data.tabel[j] <- data.tabel[j-1]
+            data.tabel[j-1]=temp
+            j--
+        endfor
+    endfor
+    for i<-0; i < data.nPelanggan; i++ do  
+        j<- i+1
+        for j > 0 and data.tabel[j-1].membership == data.tabel[j].membership and data.tabel[j-1].nama > data.tabel[j].nama do {perulangan untuk mengurutkan nama secara ascending pada masing-masing membership}
+            temp<- data.tabel[j]
+            data.tabel[j]<- data.tabel[j-1]
+            data.tabel[j-1] <- temp
+            j--
+        endfor
+    endfor
+endprocedure
