@@ -158,14 +158,35 @@ func tampilkan(data DataPelanggan) {
 	}
 }
 
+func counter(data DataPelanggan) (int, int, int) {
+	var Silver = 0
+	var Gold = 0
+	var Platinum = 0
+
+	for i := 0; i < data.nPelanggan; i++ {
+		if data.tabel[i].membership == "Silver" {
+			Silver += 1
+		} else if data.tabel[i].membership == "Gold" {
+			Gold += 1
+		} else if data.tabel[i].membership == "Platinum" {
+			Platinum += 1
+		}
+	}
+	return Silver, Gold, Platinum
+}
 func main() {
 	var data DataPelanggan
 	var min, max int
+	var Silver, Gold, Platinum int
 	isiDataDiri(&data)
 	fmt.Println("")
 	kelolaMember(&data)
 	pengurutanMembership(&data)
 	tampilkan(data)
+	Silver, Gold, Platinum = counter(data)
+	fmt.Println("Jumlah Membership Silver :", Silver)
+	fmt.Println("Jumlah Membership Gold :", Gold)
+	fmt.Println("Jumlah Membership Platinum :", Platinum)
 	totalSaldo := totalSaldoPelanggan(data)
 	fmt.Printf("Saldo Total : %.2f\n", totalSaldo)
 	min = Minimum(data)

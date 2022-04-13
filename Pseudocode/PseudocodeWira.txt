@@ -1,12 +1,13 @@
 constant NMAX : interger = 30
 
-type USer : <
+type Us er : <
     nama, JenisKelamin  string
     usia                interger 
     saldo               float64
+    membership          string
 >
 
-type tabUser array[0..NMAX]of USer
+type tabUser array[0..NMAX]of User
 
 
 procedure DataDiri(in/out DtUser : tabUser, in/out n : interger)
@@ -42,13 +43,31 @@ kamus
 algoritma
     min <- DtUser[i]<-usia
     max <- DtUser[i]<-usia
-    for _, value<-usia <- range DtUser do
-        if value<-usia < min then
-            min <- value<-usia
-        if value<-usia > max then
-            max <- value<-usia
+    for _, value.usia <- range DtUser do
+        if value.usia < min then
+            min <- value.usia
+        if value.usia > max then
+            max <- value.usia
         endif
     return min, max
 endfunction
 
+function counter(data : dataPelanggan)
+{terdefinisi tipe bentukan data untuk mencari total jumlah membership}
+kamus 
+    Silver <- 0
+    Gold <- 0
+    Platinum <- 0
 
+algoritma
+    for i <- 0 to NMAX do
+        if data.tabel[i].membership <- "Silver" then
+            Silver = Silver + 1
+        else if data.tabel[i].membership <- "Gold" then
+            Gold = Gold + 1
+        else if data.tabel[i].membership == "Platinum" then
+            Platinum = Platinum + 1
+        endif
+    return Silver, Gold, Platinum
+endfuction 
+    
