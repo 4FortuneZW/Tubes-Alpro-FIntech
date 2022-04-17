@@ -1,0 +1,55 @@
+constant NMAX : integer = 1001
+
+    type Pelanggan : <
+        nama, gender    string
+        usia            integer
+        saldo           real
+        membership      string 
+    >
+
+    type tabPelanggan array [0..NMAX] of Pelanggan
+
+type DataPelanggan : <
+    tabel           tabPelanggan
+    nPelanggan      integer
+>
+
+program Fintech
+
+kamus
+    data : dataPelanggan
+    min, max : interger
+    Silver,Gold,Platinum : interger
+    totalSaldo : real
+    rata2Usia : interger
+    rata2SaldoSilver, rata2SaldoGold, rata2SaldoPlatinum : real
+    rata2UsiaSilver, rata2UsiaGold, rata2UsiaPlatinum : interger
+algoritma
+    DataDiri(data)
+    kelolaMember(data)
+    pengurutanMembership(data)
+    Silver, Gold, Platinum <- counter(data)
+    print("Jumlah Membership Silver :", Silver)
+    print("Jumlah Membership Gold :", Gold)
+    print("Jumlah Membership Platinum :", Platinum)
+    totalSaldo <- totalSaldoPelanggan(data)
+    print("Saldo Total : %.2f\n", totalSaldo)
+    min,max <- findMinAndMax(data)
+    print("Usia Minimum dari data :", min)
+    print("Usia Maximum dari data :", max)
+    rata2Usia <- rata2Usia(data)
+    print("Rata-rata usia dari data adalah ", rata2Usia)
+    rata2SaldoSilver <- rata2SaldoPermembership(data, "Silver")
+	rata2SaldoGold <- rata2SaldoPermembership(data, "Gold")
+	rata2SaldoPlatinum <- rata2SaldoPermembership(data, "Platinum")
+	rata2UsiaSilver <- rata2UsiaPermembership(data, "Silver")
+	rata2UsiaGold <- rata2UsiaPermembership(data, "Gold")
+	rata2UsiaPlatinum <- rata2UsiaPermembership(data, "Platinum")
+    Printf("Rata-rata Saldo Silver: %.2f\n", rata2SaldoSilver)
+	print("Rata-rata Saldo Gold: %.2f\n", rata2SaldoGold)
+	print("Rata-rata Saldo Platinum: %.2f\n", rata2SaldoPlatinum)
+	print("Rata-rata Usia Silver: %d\n", rata2UsiaSilver)
+	print("Rata-rata Usia Gold: %d\n", rata2UsiaGold)
+	print("Rata-rata Usia Platinum: %d\n", rata2UsiaPlatinum)
+endprogram
+

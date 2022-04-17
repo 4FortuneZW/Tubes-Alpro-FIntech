@@ -20,35 +20,31 @@ type DataPelanggan struct {
 	nPelanggan int
 }
 
-func DataDiri(data *DataPelanggan, n *int) {
+func DataDiri(data *DataPelanggan) {
 	var nama string
 	var usia int
 	var saldo float64
-	var gender string
-
-	for i := 0; i < *n; i++ {
-		fmt.Print("Nama : ")
-		fmt.Scan(&nama, &nama, &nama)
-		fmt.Print("Usia : ")
-		fmt.Scan(&usia)
-		fmt.Print("Jenis Kelamin : ")
-		fmt.Scan(&gender)
-		fmt.Print("Saldo : ")
-		fmt.Scan(&saldo)
+	var JenisKelamin string
+	var n int
+	fmt.Print("Masukkan Jumlah data : ")
+	fmt.Scanln(&n)
+	for i := 0; i < n; i++ {
+		fmt.Scan(&nama, &JenisKelamin, &usia, &saldo)
 
 		data.tabel[i].nama = nama
 		data.tabel[i].usia = usia
-		data.tabel[i].gender = gender
+		data.tabel[i].gender = JenisKelamin
 		data.tabel[i].saldo = saldo
 
 	}
+	data.nPelanggan = n
 }
 
 func kelolaMember(data *DataPelanggan) {
 	for i := 0; i < data.nPelanggan; i++ {
 		if data.tabel[i].saldo <= 25000000.0 {
 			data.tabel[i].membership = "Silver"
-		} else if data.tabel[i].saldo <= 100000000.0 {
+		} else if (data.tabel[i].saldo <= 100000000.0) && (data.tabel[i].saldo > 25000000.0) {
 			data.tabel[i].membership = "Gold"
 		} else if data.tabel[i].saldo > 100000000.0 {
 			data.tabel[i].membership = "Platinum"
@@ -110,7 +106,7 @@ func rata2SaldoPermembership(data DataPelanggan, member string) float64 {
 			count++
 		}
 	}
-	if member == "Silver" || member == "Gold" || member == "Platinum" {
+	if (member == "Silver" || member == "Gold" || member == "Platinum") && count != 0 {
 		return total / float64(count)
 	}
 	return -1
@@ -130,34 +126,28 @@ func rata2UsiaPermembership(data DataPelanggan, member string) int {
 			count++
 		}
 	}
-	if member == "Silver" || member == "Gold" || member == "Platinum" {
+	if (member == "Silver" || member == "Gold" || member == "Platinum") && count != 0 {
 		return total / (count)
 	}
 	return -1
 }
 
-func Minimum(data DataPelanggan) int {
-	//asumsi tidak manusia berumur 1000
-	var usiaMinimum int = 1000
-	for i := 0; i < data.nPelanggan; i++ {
-		if data.tabel[i].usia < usiaMinimum {
-			usiaMinimum = data.tabel[i].usia
+func findMinAndMax(data DataPelanggan) (min int, max int) {
+	n := 0
+	min = data.tabel[0].usia
+	max = data.tabel[0].usia
+
+	for _, value := range data.tabel { //masuk ke array bukan dari index
+		if value.usia < min && n < data.nPelanggan {
+			min = value.usia
 		}
-	}
-	if usiaMinimum >= 0 {
-		return usiaMinimum
-	}
-	return -1
-}
-func Maximum(data DataPelanggan) int {
-	//asumsi tidak manusia berumur -1
-	var usiaMax int = -1
-	for i := 0; i < data.nPelanggan; i++ {
-		if data.tabel[i].usia > usiaMax {
-			usiaMax = data.tabel[i].usia
+		if value.usia > max {
+			max = value.usia
 		}
+		n++
 	}
-	return usiaMax
+
+	return min, max
 }
 
 func tampilkan(data DataPelanggan) {
@@ -186,8 +176,8 @@ func main() {
 	var data DataPelanggan
 	var min, max int
 	var Silver, Gold, Platinum int
-	var n int
-	DataDiri(&data, &n)
+
+	DataDiri(&data)
 	fmt.Println("")
 	kelolaMember(&data)
 	pengurutanMembership(&data)
@@ -198,10 +188,9 @@ func main() {
 	fmt.Println("Jumlah Membership Platinum :", Platinum)
 	totalSaldo := totalSaldoPelanggan(data)
 	fmt.Printf("Saldo Total : %.2f\n", totalSaldo)
-	min = Minimum(data)
-	max = Maximum(data)
-	fmt.Println("Usia Minimum dari data :", min)
+	min, max = findMinAndMax(data)
 	fmt.Println("Usia Maximum dari data :", max)
+	fmt.Println("Usia Minimum dari data :", min)
 	rata2Usia := rata2Usia(data)
 	fmt.Println("Rata-rata usia dari data adalah ", rata2Usia)
 	rata2SaldoSilver := rata2SaldoPermembership(data, "Silver")

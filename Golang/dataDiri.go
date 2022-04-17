@@ -10,7 +10,7 @@ type Pelanggan struct {
 	saldo              float64
 }
 
-const NMAX = 4
+const NMAX = 1001
 
 type tabPelanggan [NMAX]Pelanggan
 
@@ -19,7 +19,7 @@ type DataPelanggan struct {
 	nPelanggan int
 }
 
-func DataDiri(DtUser *tabPelanggan, n *int) {
+func DataDiri(data *DataPelanggan, n *int) {
 	var nama string
 	var usia int
 	var saldo float64
@@ -29,25 +29,25 @@ func DataDiri(DtUser *tabPelanggan, n *int) {
 		fmt.Print("Nama : ")
 		fmt.Scanln(&nama, &nama, &nama)
 		fmt.Print("Usia : ")
-		fmt.Scanln(&usia)
+		fmt.Scanln(&usia)in)
 		fmt.Print("Jenis Kelamin : ")
-		fmt.Scanln(&JenisKelamin)
+		fmt.Scanln(&JenisKelam
 		fmt.Print("Saldo : ")
 		fmt.Scanln(&saldo)
 
-		DtUser[i].Nama = nama //
-		DtUser[i].usia = usia
-		DtUser[i].JenisKelamin = JenisKelamin
-		DtUser[i].saldo = saldo
+		data.tabel[i].Nama = nama 
+		data.tabel[i].usia = usia
+		data.tabel[i].JenisKelamin = JenisKelamin
+		data.tabel[i].saldo = saldo
 
 	}
 }
 
-func findMinAndMax(DtUser tabPelanggan) (min int, max int) {
+func findMinAndMax(data DataPelanggan) (min int, max int) {
 
-	min = DtUser[0].usia
-	max = DtUser[0].usia
-	for _, value := range DtUser { //masuk ke array bukan dari index
+	min = data.tabel[0].usia
+	max = data.tabel[0].usia
+	for _, value := range data.tabel { //masuk ke array bukan dari index
 		if value.usia < min {
 			min = value.usia
 		}
@@ -59,14 +59,14 @@ func findMinAndMax(DtUser tabPelanggan) (min int, max int) {
 }
 
 func main() {
-	var DtUser tabPelanggan
+	var data DataPelanggan
 	var n int
 
 	fmt.Print("Jumlah orang : ")
 	fmt.Scanln(&n)
-	DataDiri(&DtUser, &n)
-	fmt.Print(DtUser)
-	min, max := findMinAndMax(DtUser)
+	DataDiri(&data, &n)
+	fmt.Print(data)
+	min, max := findMinAndMax(data)
 	fmt.Println("Min: ", min)
 	fmt.Println("Max: ", max)
 
