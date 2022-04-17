@@ -20,21 +20,26 @@ type DataPelanggan struct {
 	nPelanggan int
 }
 
-func DataDiri(data *DataPelanggan) {
+func DataDiri(data *DataPelanggan, n *int) {
 	var nama string
 	var usia int
 	var saldo float64
 	var gender string
 
-	data.nPelanggan = 0
-	fmt.Scan(&nama, &gender, &usia, &saldo)
-	for nama != "NONE" && gender != "NONE" && usia >= 0 && saldo >= 0 {
-		data.tabel[data.nPelanggan].nama = nama
-		data.tabel[data.nPelanggan].gender = gender
-		data.tabel[data.nPelanggan].usia = usia
-		data.tabel[data.nPelanggan].saldo = saldo
-		fmt.Scan(&nama, &gender, &usia, &saldo)
-		data.nPelanggan++
+	for i := 0; i < *n; i++ {
+		fmt.Print("Nama : ")
+		fmt.Scan(&nama, &nama, &nama)
+		fmt.Print("Usia : ")
+		fmt.Scan(&usia)
+		fmt.Print("Jenis Kelamin : ")
+		fmt.Scan(&gender)
+		fmt.Print("Saldo : ")
+		fmt.Scan(&saldo)
+
+		data.tabel[i].nama = nama
+		data.tabel[i].usia = usia
+		data.tabel[i].gender = gender
+		data.tabel[i].saldo = saldo
 
 	}
 }
@@ -181,8 +186,8 @@ func main() {
 	var data DataPelanggan
 	var min, max int
 	var Silver, Gold, Platinum int
-
-	DataDiri(&data)
+	var n int
+	DataDiri(&data, &n)
 	fmt.Println("")
 	kelolaMember(&data)
 	pengurutanMembership(&data)
