@@ -20,10 +20,12 @@ type DataPelanggan struct {
 	nPelanggan int
 }
 
-func isiDataDiri(data *DataPelanggan) {
-	var nama, gender string
+func DataDiri(data *DataPelanggan) {
+	var nama string
 	var usia int
 	var saldo float64
+	var gender string
+
 	data.nPelanggan = 0
 	fmt.Scan(&nama, &gender, &usia, &saldo)
 	for nama != "NONE" && gender != "NONE" && usia >= 0 && saldo >= 0 {
@@ -33,6 +35,7 @@ func isiDataDiri(data *DataPelanggan) {
 		data.tabel[data.nPelanggan].saldo = saldo
 		fmt.Scan(&nama, &gender, &usia, &saldo)
 		data.nPelanggan++
+
 	}
 }
 
@@ -178,7 +181,8 @@ func main() {
 	var data DataPelanggan
 	var min, max int
 	var Silver, Gold, Platinum int
-	isiDataDiri(&data)
+
+	DataDiri(&data)
 	fmt.Println("")
 	kelolaMember(&data)
 	pengurutanMembership(&data)
