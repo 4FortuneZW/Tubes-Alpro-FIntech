@@ -1,1 +1,2 @@
-// rata2UsiaSilver := rata2UsiaPermembership(data, "Silver")
+
+const NMAX int = 1001
