@@ -53,7 +53,7 @@ algoritma
 	print("Rata-rata Usia Platinum: %d\n", rata2UsiaPlatinum)
 endprogram
 
-procedure DataDiri(in/out data : DataPelanggan)
+procedure DataDiri(in/out data : DataPelanggan) {Muhammad Rizki wiratama}
 {terdefinisi tipe bentukan data untuk menginput data diri kemudian
  menghasilkan ke dalam bentuk array}
 kamus
@@ -76,7 +76,7 @@ algoritma
     data.nPelanggan <- n
 endprocedure
 
-procedure kelolaMember(in/out data : DataPelanggan)
+procedure kelolaMember(in/out data : DataPelanggan) {Dimitri Aulia rasyidin}
 {terdifinisi tipe bentukan data untuk mengelompokan membership nasabah, berupa silver/gold/platinum.
 Procedure ini menghasilkan elemen membership pada tipe bentukan}
 kamus
@@ -95,7 +95,7 @@ algoritma
 endprocedure
 
 
-procedure pengurutanMembership(in/out data: DataPelanggan)
+procedure pengurutanMembership(in/out data: DataPelanggan)  {Dimitri Aulia rasyidin}
 {terdifinisi tipe bentukan data untuk mensorting data pelanggan per membernya secara ascending berdasarkan nama pelanggan }
 kamus 
     i,j:int
@@ -119,7 +119,7 @@ algoritma
     endfor
 endprocedure
 
-function totalSaldoPelanggan(data DataPelanggan) -> real
+function totalSaldoPelanggan(data DataPelanggan) -> real {Agung hadi Winoto}
 {terdefinisi tipe bentukan data untuk mendapatkan banyak data bilangan bulat serta tabel saldo bilangan real
 kemudian mengembalikan jumlah total saldo pelanggan berupa bilangan real}
 kamus
@@ -132,7 +132,7 @@ algoritma
     return total
 endfunction
 
-function rata2Usia(data DataPelanggan) -> integer 
+function rata2Usia(data DataPelanggan) -> integer {Agung hadi Winoto}
 {terdefinisi tipe bentukan data untuk mendapatkan banyak data dan usia bilangan bulat
 kemudian melakukan penjumlahan usia dibagi banyak data nPelanggan untuk mengembalikan
 nilai rata-rata usia bertipe bilangan bulat}
@@ -148,7 +148,7 @@ algoritma
     rata2 <- total / data.nPelanggan
 endfunction
 
-function rata2SaldoPermembership(data DataPelanggan, member string) -> real
+function rata2SaldoPermembership(data DataPelanggan, member string) -> real {Agung hadi Winoto}
 {terdefinisi tipe bentukan data untuk mendapatkan banyaknya data bilangan bulat dan tabel saldo bilangan real
 serta terdefinisi member Silver/Gold/Platinum berupa string untuk mencari total dan jumlah salah satunya
 fungsi ini mengembalikan nilai rata-rata saldo sesuai keanggotaan member}
@@ -176,7 +176,7 @@ algoritma
 	return -1
 endfunction
 
-function rata2UsiaPermembership(data DataPelanggan, member string) -> integer
+function rata2UsiaPermembership(data DataPelanggan, member string) -> integer {Agung hadi Winoto}
 {terdefinisi tipe bentukan data untuk mendapatkan banyaknya data dan tabel usia bilangan bulat
 serta terdefinisi member Silver/Gold/Platinum berupa string untuk mencari total dan jumlah salah satunya
 fungsi ini mengembalikan nilai rata-rata usia sesuai keanggotaan member}
@@ -204,7 +204,7 @@ algoritma
 	return -1
 endfunction
 
-function findMinAndMax(data: dataPelanggan, min,max : integer)
+function findMinAndMax(data: dataPelanggan, min,max : integer) {Muhammad rizki wiratama}
 {terdefinisi tipe bentukan data untuk mencari nilai minimum dan maksimum dari value usia}
 kamus
     value : interger
@@ -223,7 +223,7 @@ algoritma
     return min, max
 endfunction
 
-function counter(data : dataPelanggan)
+function counter(data : dataPelanggan) {Muhammad rizki wiratama}
 {terdefinisi tipe bentukan data untuk mencari total jumlah membership}
 kamus 
     Silver : interger

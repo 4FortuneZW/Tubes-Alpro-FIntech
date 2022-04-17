@@ -1,16 +1,20 @@
-constant NMAX : interger = 30
+constant NMAX : integer = 1001
 
-type Us er : <
-    nama, JenisKelamin  string
-    usia                interger 
-    saldo               float64
-    membership          string
+    type Pelanggan : <
+        nama, gender    string
+        usia            integer
+        saldo           real
+        membership      string 
+    >
+
+    type tabPelanggan array [0..NMAX] of Pelanggan
+
+type DataPelanggan : <
+    tabel           tabPelanggan
+    nPelanggan      integer
 >
 
-type tabUser array[0..NMAX]of User
-
-
-procedure DataDiri(in/out DtUser : tabUser, in/out n : interger)
+procedure DataDiri(in/out data : DataPelanggan)
 {terdefinisi tipe bentukan data untuk menginput data diri kemudian
  menghasilkan ke dalam bentuk array}
 kamus
@@ -18,48 +22,53 @@ nama : string
 usia : interger
 saldo : float64
 JenisKelamin : string
+n : interger
 
 algoritma
-    for i <- 0 to n do
-        print(*Nama :*)
-        input(nama)
-        print(*Usia :*)
-        input(usia)
-        print(*Jenis Kelamin :*)
-        input(jenisKelamin)
-        print(*Saldo :*)
-        input(saldo)
-        DtUser[i] <- nama
-        DtUser[i] <- usia
-        DtUser[i] <- JenisKelamin
-        DtUser[i] <- saldo
+    print("Masukkan Jumlah data : ")
+    input(n)
+    for i <- 0 to n do 
+        input(nama, JenisKelamin, usia, saldo)
+        data.tabel[i].nama <- nama
+        data.tabel[i].usia <- usia
+        data.tabel[i].gender <- JenisKelamin
+        data.tabel[i].saldo <- saldo
+        i++
     endfor
+    data.nPelanggan <- nama
+endprocedure
 
-function findMinAndMax(DtUser: tabUser, min,max : integer)
+function findMinAndMax(data: dataPelanggan, min,max : integer)
 {terdefinisi tipe bentukan data untuk mencari nilai minimum dan maksimum dari value usia}
 kamus
-    value <- interger
-
+    value : interger
+    n : interger
 algoritma
-    min <- DtUser[i]<-usia
-    max <- DtUser[i]<-usia
-    for _, value.usia <- range DtUser do
-        if value.usia < min then
+    n <- 0
+    min <- data.tabel[0].usia
+    max <- data.tabel[0].usia
+    for _, value.usia <- range data.tabel do
+        if value.usia < min and n < data.nPelanggang then
             min <- value.usia
         if value.usia > max then
             max <- value.usia
         endif
+        n++
     return min, max
 endfunction
 
 function counter(data : dataPelanggan)
 {terdefinisi tipe bentukan data untuk mencari total jumlah membership}
 kamus 
+    Silver : interger
+    Gold : interger
+    Platinum : interger
+
+algoritma
     Silver <- 0
     Gold <- 0
     Platinum <- 0
 
-algoritma
     for i <- 0 to NMAX do
         if data.tabel[i].membership <- "Silver" then
             Silver = Silver + 1
@@ -70,4 +79,5 @@ algoritma
         endif
     return Silver, Gold, Platinum
 endfuction 
-    
+
+
