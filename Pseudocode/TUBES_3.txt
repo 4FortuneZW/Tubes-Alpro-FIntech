@@ -53,3 +53,197 @@ algoritma
 	print("Rata-rata Usia Platinum: %d\n", rata2UsiaPlatinum)
 endprogram
 
+procedure DataDiri(in/out data : DataPelanggan)
+{terdefinisi tipe bentukan data untuk menginput data diri kemudian
+ menghasilkan ke dalam bentuk array}
+kamus
+nama : string
+usia : interger
+saldo : float64
+JenisKelamin : string
+n : interger
+
+algoritma
+    print("Masukkan Jumlah data : ")
+    input(n)
+    for i <- 0 to n-1 do 
+        input(nama, JenisKelamin, usia, saldo)
+        data.tabel[i].nama <- nama
+        data.tabel[i].usia <- usia
+        data.tabel[i].gender <- JenisKelamin
+        data.tabel[i].saldo <- saldo
+    endfor
+    data.nPelanggan <- n
+endprocedure
+
+procedure kelolaMember(in/out data : DataPelanggan)
+{terdifinisi tipe bentukan data untuk mengelompokan membership nasabah, berupa silver/gold/platinum.
+Procedure ini menghasilkan elemen membership pada tipe bentukan}
+kamus
+    i: int 
+algoritma
+    
+    for i <- 0 to data.nPelanggan-1 do
+        if data.tabel[i].saldo <= 25000000.0 then
+            data.tabel[i].membership <- "Silver"
+        else if (data.tabel[i].saldo > 25000000.0) and (data.tabel[i].saldo <= 100000000.0) then
+            data.tabel[i].membership <- "Gold"
+        else if data.tabel[i].saldo > 100000000.0 then
+            data.tabel[i].membership <- "Platinum"
+        endif
+    endfor
+endprocedure
+
+
+procedure pengurutanMembership(in/out data: DataPelanggan)
+{terdifinisi tipe bentukan data untuk mensorting data pelanggan per membernya secara ascending berdasarkan nama pelanggan }
+kamus 
+    i,j:int
+algoritma
+    for i <- 0 to data.nPelanggan-1 do 
+        j <- i+1
+        for data.tabel[j-1].membership < data.tabel[j].membership and j<0 do {perulangan untuk mengurutkan alphabet kelas membership}
+            temp <- data.tabel[j]
+            data.tabel[j] <- data.tabel[j-1]
+            data.tabel[j-1]=temp
+        endfor
+    endfor
+    for i <- 0 to data.nPelanggan-1 do  
+        j<- i+1
+        for j > 0 and data.tabel[j-1].membership == data.tabel[j].membership and data.tabel[j-1].nama > data.tabel[j].nama do {perulangan untuk mengurutkan nama secara ascending pada masing-masing membership}
+            temp<- data.tabel[j]
+            data.tabel[j]<- data.tabel[j-1]
+            data.tabel[j-1] <- temp
+            
+        endfor
+    endfor
+endprocedure
+
+function totalSaldoPelanggan(data DataPelanggan) -> real
+{terdefinisi tipe bentukan data untuk mendapatkan banyak data bilangan bulat serta tabel saldo bilangan real
+kemudian mengembalikan jumlah total saldo pelanggan berupa bilangan real}
+kamus
+    total : real
+algoritma
+    total <- 0
+    for i <- 0 to data.nPelanggan-1 do
+        total <- total + data.tabel[i].saldo
+    endfor
+    return total
+endfunction
+
+function rata2Usia(data DataPelanggan) -> integer 
+{terdefinisi tipe bentukan data untuk mendapatkan banyak data dan usia bilangan bulat
+kemudian melakukan penjumlahan usia dibagi banyak data nPelanggan untuk mengembalikan
+nilai rata-rata usia bertipe bilangan bulat}
+kamus
+    total : integer
+    rata2 : integer
+algoritma
+    total <- 0
+    rata <- 0
+    for i <- 0 to data.nPelanggan-1 do
+        total <- total + data.tabel[i].usia
+    endfor
+    rata2 <- total / data.nPelanggan
+endfunction
+
+function rata2SaldoPermembership(data DataPelanggan, member string) -> real
+{terdefinisi tipe bentukan data untuk mendapatkan banyaknya data bilangan bulat dan tabel saldo bilangan real
+serta terdefinisi member Silver/Gold/Platinum berupa string untuk mencari total dan jumlah salah satunya
+fungsi ini mengembalikan nilai rata-rata saldo sesuai keanggotaan member}
+kamus
+    total : real
+    count : integer
+algoritma
+    total <- 0
+    count <- 0
+    for i <- 0 to data.nPelanggan-1 do
+		if data.tabel[i].membership == "Silver" and member == "Silver" then
+			total <- total + data.tabel[i].saldo
+			count <- count + 1
+		else if data.tabel[i].membership == "Gold" and member == "Gold" then
+			total <- total + data.tabel[i].saldo
+			count <- count + 1
+		else if data.tabel[i].membership == "Platinum" and member == "Platinum" then
+			total <- total + data.tabel[i].saldo
+			count <- count + 1
+        endif
+    endfor
+    if member == "Silver"  or ember == "Gold" or member == "Platinum" then
+		return total / count
+    endif
+	return -1
+endfunction
+
+function rata2UsiaPermembership(data DataPelanggan, member string) -> integer
+{terdefinisi tipe bentukan data untuk mendapatkan banyaknya data dan tabel usia bilangan bulat
+serta terdefinisi member Silver/Gold/Platinum berupa string untuk mencari total dan jumlah salah satunya
+fungsi ini mengembalikan nilai rata-rata usia sesuai keanggotaan member}
+kamus
+    total : real
+    count : integer
+algoritma
+    total <- 0
+    count <- 0
+    for i <- 0 to data.nPelanggan-1 do
+		if data.tabel[i].membership == "Silver" and member == "Silver" then
+			total <- total + data.tabel[i].usia
+			count <- count + 1
+		else if data.tabel[i].membership == "Gold" and member == "Gold" then
+			total <- total + data.tabel[i].usia
+			count <- count + 1
+		else if data.tabel[i].membership == "Platinum" and member == "Platinum" then
+			total <- total + data.tabel[i].usia
+			count <- count + 1
+        endif
+    endfor
+    if member == "Silver"  or ember == "Gold" or member == "Platinum" then
+		return total / count
+    endif
+	return -1
+endfunction
+
+function findMinAndMax(data: dataPelanggan, min,max : integer)
+{terdefinisi tipe bentukan data untuk mencari nilai minimum dan maksimum dari value usia}
+kamus
+    value : interger
+    n : interger
+algoritma
+    n <- 0
+    min <- data.tabel[0].usia
+    max <- data.tabel[0].usia
+    for _, value.usia <- range data.tabel do
+        if value.usia < min and n < data.nPelanggang then
+            min <- value.usia
+        if value.usia > max then
+            max <- value.usia
+        endif
+        n++
+    return min, max
+endfunction
+
+function counter(data : dataPelanggan)
+{terdefinisi tipe bentukan data untuk mencari total jumlah membership}
+kamus 
+    Silver : interger
+    Gold : interger
+    Platinum : interger
+
+algoritma
+    Silver <- 0
+    Gold <- 0
+    Platinum <- 0
+
+    for i <- 0 to NMAX do
+        if data.tabel[i].membership <- "Silver" then
+            Silver = Silver + 1
+        else if data.tabel[i].membership <- "Gold" then
+            Gold = Gold + 1
+        else if data.tabel[i].membership == "Platinum" then
+            Platinum = Platinum + 1
+        endif
+    return Silver, Gold, Platinum
+endfuction 
+
+
