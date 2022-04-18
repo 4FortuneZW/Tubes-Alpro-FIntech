@@ -45,7 +45,7 @@ algoritma
 	rata2UsiaSilver <- rata2UsiaPermembership(data, "Silver")
 	rata2UsiaGold <- rata2UsiaPermembership(data, "Gold")
 	rata2UsiaPlatinum <- rata2UsiaPermembership(data, "Platinum")
-    Printf("Rata-rata Saldo Silver: %.2f\n", rata2SaldoSilver)
+    Print("Rata-rata Saldo Silver: %.2f\n", rata2SaldoSilver)
 	print("Rata-rata Saldo Gold: %.2f\n", rata2SaldoGold)
 	print("Rata-rata Saldo Platinum: %.2f\n", rata2SaldoPlatinum)
 	print("Rata-rata Usia Silver: %d\n", rata2UsiaSilver)
